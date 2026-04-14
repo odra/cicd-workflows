@@ -48,6 +48,11 @@ on:
         type: string
   workflow_call:
     inputs:
+       bazel-action:
+        description: "Bazel action to run (build, test, etc)"
+        required: false
+        default: "test"
+        type: string
       bazel-target:
         description: "Bazel target to build with the AutoSD toolchain"
         required: false
