@@ -16,6 +16,11 @@ name: AutoSD Build
 on:
   workflow_dispatch:
     inputs:
+      bazel-action:
+        description: "Bazel action to run (build, test, etc)"
+        required: false
+        default: "test"
+        type: string
       bazel-target:
         description: "Bazel target to build with the AutoSD toolchain"
         required: false
@@ -110,4 +115,4 @@ jobs:
         run: |
           set -euo pipefail
 
-          bazel test --config ${{ inputs.bazel-config }} ${{ inputs.bazel-target }}
+          bazel ${{ inputs.bazel-action }} --config ${{ inputs.bazel-config }} ${{ inputs.bazel-target }}
