@@ -48,7 +48,7 @@ on:
         type: string
   workflow_call:
     inputs:
-       bazel-action:
+      bazel-action:
         description: "Bazel action to run (build, test, etc)"
         required: false
         default: "test"
