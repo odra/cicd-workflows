@@ -14,6 +14,33 @@
 name: AutoSD Build
 
 on:
+  workflow_dispatch:
+    inputs:
+      bazel-target:
+        description: "Bazel target to build with the AutoSD toolchain"
+        required: false
+        default: "//..."
+        type: string
+      bazel-config:
+        description: "Bazel configuration to use for AutoSD builds"
+        required: false
+        default: "autosd-x86_64"
+        type: string
+      bazel-disk-cache:
+        description: "Enable Bazel disk cache on GitHub. The value can be a string to use as cache key for separating workflows"
+        required: false
+        default: "true"
+        type: string
+      extra-bazel-flags:
+        description: "Additional Bazel flags to pass to the build command (whitespace separated)"
+        required: false
+        default: ""
+        type: string
+      extra-bazel-test-flags:
+        description: "Additional Bazel flags to pass to the test command (whitespace separated)"
+        required: false
+        default: ""
+        type: string
   workflow_call:
     inputs:
       bazel-target:
