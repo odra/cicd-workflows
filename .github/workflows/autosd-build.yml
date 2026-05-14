@@ -79,6 +79,6 @@ jobs:
 
           bazel ${{ inputs.bazel-action }} \
           --bazelrc=${{ github.action_path  }}/../../bazelrc.d/autosd.bazelrc \
-          --bazelrc=${{ .bazelrc }} \
+          --bazelrc=.bazelrc \
           --config ${{ inputs.bazel-config }} \
           ${{ inputs.extra-bazel-flags }} -- ${{ inputs.bazel-target }}
