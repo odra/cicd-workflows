@@ -58,7 +58,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          repository: odra/ci-cd-workflows
+          repository: odra/cicd-workflows
           ref: autosd-bazel-ci
           path: score-ci-cd-workflows
       - name: Setup Bazel (Shared Caching)
