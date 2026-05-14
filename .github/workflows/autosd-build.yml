@@ -16,6 +16,11 @@ name: AutoSD Build
 on:
   workflow_call:
     inputs:
+      arch:
+        description: "Architecture to build"
+        required: true
+        type: string
+        default: "x86_64"
       bazel-action:
         description: "Bazel action to run (build, test, etc)"
         required: false
@@ -25,10 +30,6 @@ on:
         description: "Bazel target to build or test"
         required: false
         default: "//score/..."
-        type: string
-      bazel-config:
-        description: "Bazel configuration to use for a given toolchain or platform"
-        required: true
         type: string
       bazel-disk-cache:
         description: "Enable Bazel disk cache on GitHub. The value can be a string to use as cache key for separating workflows"
@@ -86,5 +87,5 @@ jobs:
           --bazelrc=score-ci-cd-workflows/bazelrc.d/autosd.bazelrc \
           --bazelrc=.bazelrc \
           ${{ inputs.bazel-action }} \
-          --config ${{ inputs.bazel-config }} \
+          --config autosd-${{ inputs.arch }} \
           ${{ inputs.extra-bazel-flags }} -- ${{ inputs.bazel-target }}
