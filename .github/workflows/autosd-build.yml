@@ -73,8 +73,9 @@ jobs:
         run: |
           set -euo pipefail
 
-          bazel ${{ inputs.bazel-action }} \
+          bazel \
           --bazelrc=${{ github.action_path  }}/../../bazelrc.d/autosd.bazelrc \
           --bazelrc=.bazelrc \
+          ${{ inputs.bazel-action }} \
           --config ${{ inputs.bazel-config }} \
           ${{ inputs.extra-bazel-flags }} -- ${{ inputs.bazel-target }}
