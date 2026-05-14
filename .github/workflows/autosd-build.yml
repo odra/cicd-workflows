@@ -70,8 +70,7 @@ jobs:
 
       - name: Check for toolchain bazelrc file
         run: |
-          ls ${{ github.action_path  }}
-          ls ${{ github.action_path  }}../../
+          ls $GITHUB_ACTION_PATH
       
       - name: Run Bazel Action
         if: inputs.bazel-target != ''
