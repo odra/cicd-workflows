@@ -66,7 +66,12 @@ jobs:
       
       - name: Look for AutoSD Toolchain
         run: |
-          bazel cquery '@score_autosd10_x86_64_toolchain//:x86_64-linux-autosd10'  
+          bazel cquery '@score_autosd10_x86_64_toolchain//:x86_64-linux-autosd10'
+
+      - name: Check for toolchain bazelrc file
+        run: |
+          ls ${{ github.action_path  }}
+          ls ${{ github.action_path  }}../../
       
       - name: Run Bazel Action
         if: inputs.bazel-target != ''
