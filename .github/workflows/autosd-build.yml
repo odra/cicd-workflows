@@ -75,7 +75,7 @@ jobs:
 
       - name: Check for toolchain bazelrc file
         run: |
-          ls score-ci-cd-workflows
+          stat score-ci-cd-workflows/bazelrc.d/autosd.bazelrc
       
       - name: Run Bazel Action
         if: inputs.bazel-target != ''
@@ -83,7 +83,7 @@ jobs:
           set -euo pipefail
 
           bazel \
-          --bazelrc=${{ github.action_path  }}/../../bazelrc.d/autosd.bazelrc \
+          --bazelrc=score-ci-cd-workflows/bazelrc.d/autosd.bazelrc \
           --bazelrc=.bazelrc \
           ${{ inputs.bazel-action }} \
           --config ${{ inputs.bazel-config }} \
